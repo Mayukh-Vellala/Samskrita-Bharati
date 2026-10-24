@@ -1,0 +1,565 @@
+
+% !TeX program = xelatex
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[a4paper,margin=22mm,headheight=15pt]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{array,tabularx,booktabs,longtable}
+\usepackage[table]{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\setdefaultlanguage{english}
+\setotherlanguage{telugu}
+\newfontfamily\telugufont[Script=Telugu,Scale=1.05]{Noto Serif Telugu}
+\newcommand{\te}[1]{{\telugufont #1}}
+
+\definecolor{navy}{HTML}{17365D}
+\definecolor{teal}{HTML}{087E8B}
+\definecolor{paleBlue}{HTML}{EAF2F8}
+\definecolor{paleGold}{HTML}{FFF4D6}
+\definecolor{paleGreen}{HTML}{E8F5E9}
+
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=teal}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Sanskrit Grammar}
+\rhead{\te{సంస్కృత వ్యాకరణం}}
+\cfoot{\thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.25}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\newtcolorbox{mainbox}{
+  colback=paleBlue,colframe=navy,
+  boxrule=0.8pt,arc=2mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm
+}
+\newtcolorbox{notebox}{
+  colback=paleGold,colframe=teal,
+  boxrule=0.6pt,arc=2mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm
+}
+
+\begin{document}
+
+% ==================================================
+% TITLE
+% ==================================================
+
+\begin{titlepage}
+\centering
+\vspace*{20mm}
+
+{\Huge\bfseries Classification involved in P\={a}\d{n}ini's A\d{s}\d{t}\={a}dhy\={a}y\={\i}\par}
+\vspace{5mm}
+{\Large\te{సంస్కృత వ్యాకరణం}\par}
+
+\vspace{8mm}
+
+{\large\bfseries
+Mayukh Vellala
+\par}
+
+\vspace{15mm}
+
+\begin{mainbox}
+\centering
+{\LARGE\bfseries\te{తిఙ్ సుబంతచయో వాక్యమ్}}
+\vspace{4mm}
+\\
+\large
+Tiṅ and Subanta are the two principal components
+in the formation and analysis of a sentence.
+\end{mainbox}
+
+\vfill
+\end{titlepage}
+
+% ==================================================
+% CONTENTS
+% ==================================================
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+% ==================================================
+\section{The Fundamental Division}
+% ==================================================
+
+
+\begin{mainbox}
+\centering
+{\Large\te{తిఙ్ సుబంతచయో వాక్యమ్}}
+
+\vspace{5mm}
+
+\begin{tikzpicture}[
+  node distance=7mm and 12mm,
+  every node/.style={align=center},
+  arrow/.style={-{Stealth[length=2.5mm]},thick,draw=teal}
+]
+
+% Starting point
+% First node: Maheshvara Sutras
+% First node: Māheśvara Sūtrāṇi
+\node (mahesvarasutras) {
+  \textbf{Māheśvara Sūtrāṇi (\te{మాహేశ్వర సూత్రాలు})}
+};
+
+% Dhātu follows Māheśvara Sūtrāṇi
+\node[below=13mm of mahesvarasutras] (dhatu) {
+  \textbf{Dhātu (\te{ధాతువు})}
+};
+
+\draw[arrow] (mahesvarasutras.south) -- (dhatu.north);
+
+% Two branches
+\node[below left=13mm and 18mm of dhatu] (branchone) {
+  \textbf{Branch 1}
+};
+
+\node[below right=13mm and 18mm of dhatu] (branchtwo) {
+  \textbf{Branch 2}
+};
+
+% Arrows from Dhātu to the branches
+\draw[arrow] (dhatu.south) -- (branchone.north);
+\draw[arrow] (dhatu.south) -- (branchtwo.north);
+
+% First level of each branch
+\node[below=of branchone] (pratipadika) {
+  Prātipadika (\te{ప్రాతిపదిక})
+};
+
+\node[below=of branchtwo] (tingpratyaya) {
+  Tiṅ-pratyaya (\te{తిఙ్ ప్రత్యయం})
+};
+
+% Downward arrows within the branches
+\draw[arrow] (branchone.south) -- (pratipadika.north);
+\draw[arrow] (branchtwo.south) -- (tingpratyaya.north);
+
+% Final forms
+\node[below=of pratipadika] (subhanta) {
+  Subanta (\te{సుబంతం})\\
+  \small Nāmika-rūpāṇi
+};
+
+\node[below=of tingpratyaya] (tingantam) {
+  Tiṅ-antam (\te{తిఙంతం})\\
+  \small Kriyā-rūpāṇi
+};
+
+\draw[arrow] (pratipadika.south) -- (subhanta.north);
+\draw[arrow] (tingpratyaya.south) -- (tingantam.north);
+
+\end{tikzpicture}
+\end{mainbox}
+
+
+% ==================================================
+\section{The Ten Dhātu Gaṇas (\te{ధాతు గణాలు})}
+% ==================================================
+
+A Dhātu (\te{ధాతువు}) is the starting point for the two branches.
+The ten traditional gaṇas are:
+
+\vspace{2mm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\rowcolors{2}{paleBlue}{white}
+
+\begin{tabularx}{0.88\textwidth}{
+  >{\centering\arraybackslash}p{1.2cm}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}X
+}
+\toprule
+\rowcolor{navy}
+\color{white}\textbf{No.} &
+\color{white}\textbf{\te{గణం}} &
+\color{white}\textbf{IAST Name}\\
+\midrule
+1  & \te{భ్వాదిగణం}     & Bhvādi\\
+2  & \te{అదాదిగణం}      & Adādi\\
+3  & \te{జుహోత్యాదిగణం} & Juhotyādi\\
+4  & \te{దివాదిగణం}     & Divādi\\
+5  & \te{స్వాదిగణం}     & Svādi\\
+6  & \te{తుదాదిగణం}     & Tudādi\\
+7  & \te{రుధాదిగణం}    & Rudhādi\\
+8  & \te{తనాదిగణం}     & Tanādi\\
+9  & \te{క్ర్యాదిగణం}   & Kryādi\\
+10 & \te{చురాదిగణం}    & Curādi\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ==================================================
+\section{How to go from Dhātu (Root) to Subanta (Noun)?}
+% ==================================================
+
+\subsection{The Nominal Route}
+
+\begin{mainbox}
+\centering
+\textbf{Dhātu}
+
+$\Downarrow$
+
+\textbf{Prātipadika (\te{ప్రాతిపదిక})}
+
+$\Downarrow$
+
+\textbf{Prātipadika (\te{ప్రాతిపదిక})} + \textbf{Subanta} \textbf{\te{సుబంతం}}
+
+$\Downarrow$
+
+\textbf{Sup (\te{సప్})} 
+\end{mainbox}
+
+A Pr\=atipadika is called "Proto-Noun" in english. A Pr\=atipadika by itself is not a noun unless a Subanta is joined to it. Moreover, we assume the process of going from Dh\=atu to Pr\=atipadika to be given  for now. We will address it later. Note that we use Sup and Subanta interchangeably.\\
+\\
+The following topics are associated with this route:
+
+\begin{enumerate}
+  \item Kāraka (\te{కారకం})
+  \item Strī-pratyaya (\te{స్త్రీప్రత్యయం})
+  \item Upasarga (\te{ఉపసర్గ})
+  \item Samāsa (\te{సమాసం})
+  \item Sandhi (\te{సంధి})
+  \item Taddhita (\te{తద్ధితం})
+  \item Avyaya (\te{అవ్యయం})
+\end{enumerate}
+
+\subsection{Kāraka (\te{కారకం})}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{2}{paleBlue}{white}
+
+\begin{tabularx}{\textwidth}{
+  >{\centering\arraybackslash}p{0.7cm}
+  >{\raggedright\arraybackslash}p{3.2cm}
+  >{\raggedright\arraybackslash}p{3.1cm}
+  >{\raggedright\arraybackslash}X
+}
+\toprule
+\rowcolor{navy}
+\color{white}\textbf{No.} &
+\color{white}\textbf{\te{కారకం}} &
+\color{white}\textbf{Kāraka} &
+\color{white}\textbf{Basic Relation}\\
+\midrule
+1 & \te{కర్త} & Kartṛ & Agent or doer\\
+2 & \te{కర్మ} & Karman & Object or target\\
+3 & \te{కరణం} & Karaṇa & Instrument or means\\
+4 & \te{సంప్రదానం} & Sampradāna & Recipient or beneficiary\\
+5 & \te{అపాదానం} & Apādāna & Source or separation\\
+6 & \te{అధికరణం} & Adhikaraṇa & Location or locus\\
+7 & \te{సంబోధన కారకం} & Sambodhana & Addressing or calling someone\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\newpage 
+
+\subsubsection{One-One Correspondence between Vibhakti (\te{విభక్తులు}) and Kāraka (\te{కారకాలు})}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{2}{paleBlue}{white}
+
+\begin{tabularx}{\textwidth}{
+  >{\centering\arraybackslash}p{0.8cm}
+  >{\raggedright\arraybackslash}p{3.6cm}
+  >{\raggedright\arraybackslash}p{3.6cm}
+  >{\raggedright\arraybackslash}X
+}
+\toprule
+\rowcolor{navy}
+\color{white}\textbf{No.} &
+\color{white}\textbf{Vibhakti (\te{విభక్తి})} &
+\color{white}\textbf{Kāraka (\te{కారకం})} &
+\color{white}\textbf{Meaning (\te{అర్థం})}\\
+\midrule
+1 & Prathamā Vibhakti (\te{ప్రథమా విభక్తి})
+  & Kartṛ Kāraka (\te{కర్తృ కారకం})
+  & Agent or doer (\te{చేయువాడు})\\
+
+2 & Dvitīyā Vibhakti (\te{ద్వితీయా విభక్తి})
+  & Karman Kāraka (\te{కర్మ కారకం})
+  & Object or target (\te{క్రియకు గురయ్యేది})\\
+
+3 & Tṛtīyā Vibhakti (\te{తృతీయా విభక్తి})
+  & Karaṇa Kāraka (\te{కరణ కారకం})
+  & Instrument or means (\te{సాధనం})\\
+
+4 & Caturthī Vibhakti (\te{చతుర్థీ విభక్తి})
+  & Sampradāna Kāraka (\te{సంప్రదాన కారకం})
+  & Recipient or beneficiary (\te{గ్రహీత})\\
+
+5 & Pañcamī Vibhakti (\te{పంచమీ విభక్తి})
+  & Apādāna Kāraka (\te{అపాదాన కారకం})
+  & Source or separation (\te{విడిపోవుట లేదా మూలం})\\
+
+6 & Ṣaṣṭhī Vibhakti (\te{షష్ఠీ విభక్తి})
+  & Sambandha (\te{సంబంధం})
+  & Relationship or possession (\te{సంబంధాన్ని తెలుపుట})\\
+
+7 & Saptamī Vibhakti (\te{సప్తమీ విభక్తి})
+  & Adhikaraṇa Kāraka (\te{అధికరణ కారకం})
+  & Location or locus (\te{స్థానం})\\
+
+8 & Sambodhana (\te{సంబోధన})
+  & Sambodhana (\te{సంబోధన})
+  & Addressing or calling someone (\te{పిలుచుట})\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\newpage
+
+\subsubsection{Identifying Kārakas by Questioning the Verb
+(\te{క్రియను ప్రశ్నించి కారకాలను గుర్తించడం})}
+
+\textbf{An example from the book \te{సంస్కృత వ్యాకరణం}}
+
+\begin{mainbox}
+\centering
+% Insert the exact Sanskrit sentence from the first whiteboard
+% photograph below, preserving its original wording.
+\te{రమా హస్తేన గ్రంథాలయాత్ బాలకాయ పాఠశాలాయాం పుస్తకం దదాతి}
+\end{mainbox}
+
+\begin{itemize}
+    \item \textbf{Step 1: Identify the Tiṅantam (Verb)}\\
+    Identify the verb in the sentence first. The questions below
+    must be asked about that verb and answered using the words
+    actually present in the sentence.
+
+    \item \textbf{Step 2: Ask Questions About the Verb}
+            \begin{center}
+            \small
+            \renewcommand{\arraystretch}{1.5}
+            \rowcolors{2}{paleBlue}{white}
+            
+            \begin{tabularx}{\textwidth}{
+              >{\centering\arraybackslash}p{0.7cm}
+              >{\raggedright\arraybackslash}p{4.1cm}
+              >{\raggedright\arraybackslash}p{4cm}
+              >{\raggedright\arraybackslash}X
+            }
+            \toprule
+            \rowcolor{navy}
+            \color{white}\textbf{No.} &
+            \color{white}\textbf{Question} &
+            \color{white}\textbf{Answer from the sentence} &
+            \color{white}\textbf{Kāraka / Relation}\\
+            \midrule
+            1 & Who performs the action? &
+            To be identified from the sentence &
+            Kartṛ (\te{కర్తృ})\\
+            2 & What is acted upon? &
+            To be identified from the sentence &
+            Karman (\te{కర్మ})\\
+            3 & By what means? &
+            To be identified from the sentence &
+            Karaṇa (\te{కరణం})\\
+            4 & To whom or for whom? &
+            To be identified from the sentence &
+            Sampradāna (\te{సంప్రదానం})\\
+            5 & From whom or what? &
+            To be identified from the sentence &
+            Apādāna (\te{అపాదానం})\\
+            6 & Whose / what relation? &
+            To be identified from the sentence &
+            Sambandha (\te{సంబంధం})\\
+            7 & Where / in what location? &
+            To be identified from the sentence &
+            Adhikaraṇa (\te{అధికరణం})\\
+            \bottomrule
+            \end{tabularx}
+            \end{center}
+            \normalsize
+
+    \item \textbf{Step 3: Connect Kāraka and Vibhakti}\\
+    After identifying the words that answer the questions, determine
+    the Vibhakti of each word. Kāraka describes a grammatical
+    relationship associated with the action, while Vibhakti identifies the nominal case form.
+
+   \item \textbf{Step 4: Classification by Final Sound — \te{అ - ఔ అంతాలు} (Vowel-ending) and \te{హల్లుల అంతాలు} (Consonant-ending)}
+
+The declensional rules applied to a \textit{prātipadika} (nominal stem) depend, among other factors, on the sound with which the stem ends. Therefore, we classify nominal stems into different groups based on their final vowel or consonant. Each group may undergo a distinct sequence of transformations under the relevant rules of Pāṇini's Aṣṭādhyāyī when \textit{sup}-pratyayas (nominal case endings) are added.
+
+\begin{itemize}
+    \item \textbf{Vowel-ending stems:} Stems ending in vowels, from \te{అ} to \te{ఔ}, are classified according to their final vowel, such as \textit{akārānta}, \textit{ikārānta}, \textit{ukārānta}, and so on.
+
+    \item \textbf{Consonant-ending stems:} Stems ending in consonants, from \te{క} to \te{హ}, are classified according to their final consonant and other relevant grammatical properties.
+\end{itemize}
+
+This classification helps determine which Pāṇinian rules apply during the formation of the different \textit{vibhakti} (case) and \textit{vacana} (number) forms. The same case ending may produce different surface forms when added to stems belonging to different classes. Thus, identifying the final sound of a \textit{prātipadika} is an important step in deriving its \textit{subanta} forms.
+
+
+\end{itemize}
+
+\subsubsection{Which Pratyaya to add for a given Vibhakti and Vacana? (\te{విభక్తి, వచనం మరియు సుప్ ప్రత్యయాలు})}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{2}{paleBlue}{white}
+
+\begin{tabularx}{\textwidth}{
+  >{\raggedright\arraybackslash}p{2.5cm}
+  >{\centering\arraybackslash}X
+  >{\centering\arraybackslash}X
+  >{\centering\arraybackslash}X
+}
+\toprule
+\rowcolor{navy}
+\color{white}\textbf{Vibhakti (\te{విభక్తి})} &
+\color{white}\textbf{Eka (\te{ఏక})} &
+\color{white}\textbf{Dvi (\te{ద్వి})} &
+\color{white}\textbf{Bahu (\te{బహు})}\\
+\midrule
+Prathamā (\te{ప్రథమా}) & su (\te{సు}) & au (\te{ఔ}) & jas (\te{జస్})\\
+Dvitīyā (\te{ద్వితీయా}) & am (\te{అమ్}) & auṭ (\te{ఔట్}) & śas (\te{శస్})\\
+Tṛtīyā (\te{తృతీయా}) & ṭā (\te{టా}) & bhyām (\te{భ్యామ్}) & bhis (\te{భిస్})\\
+Caturthī (\te{చతుర్థీ}) & ṅe (\te{ఙే}) & bhyām (\te{భ్యామ్}) & bhyas (\te{భ్యస్})\\
+Pañcamī (\te{పంచమీ}) & ṅasi (\te{ఙసి}) & bhyām (\te{భ్యామ్}) & bhyas (\te{భ్యస్})\\
+Ṣaṣṭhī (\te{షష్ఠీ}) & ṅas (\te{ఙస్}) & os (\te{ఓస్}) & ām (\te{ఆమ్})\\
+Saptamī (\te{సప్తమీ}) & ṅi (\te{ఙి}) & os (\te{ఓస్}) & sup (\te{సుప్})\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\normalsize
+
+\subsection{Strī-pratyaya (\te{స్త్రీప్రత్యయం})}
+
+Strī-pratyayas are suffixes associated with the formation of
+feminine nominal forms.
+
+They are included among the processes relevant to nominal
+formation, alongside the other operations listed above.
+
+\subsection{Upasarga (\te{ఉపసర్గ})}
+
+Upasargas are prefixes associated with roots and derived forms.
+
+\subsection{Samāsa (\te{సమాసం})}
+
+Samāsa combines words into a compound.
+
+\begin{mainbox}
+\centering
+\textbf{Rāma + Lakṣmaṇa}
+
+\vspace{2mm}
+$\Downarrow$
+
+\vspace{2mm}
+\textbf{Rāmalakṣmaṇa}
+
+\vspace{2mm}
+\te{రామలక్ష్మణ}
+\end{mainbox}
+
+The example illustrates the combination of two nominal elements
+into a compound expression.
+
+\subsection{Sandhi (\te{సంధి})}
+
+\begin{mainbox}
+\centering
+{\Large\te{సంధి} --- Sandhi}
+
+\vspace{2mm}
+\textbf{Word Fusion}
+
+(Global / Universal)
+
+\vspace{2mm}
+\textit{Analytic to Synthetic}
+\end{mainbox}
+
+Sandhi concerns the joining and adjustment of sounds at relevant
+boundaries. It is treated as a general process, rather than
+being placed exclusively under the nominal or verbal route.
+
+\subsection{Taddhita (\te{తద్ధితం})}
+
+Taddhita suffixes derive a new word from an existing nominal base.
+
+\begin{mainbox}
+\centering
+\textbf{Raghu + derivative suffix}
+
+\vspace{2mm}
+$\Downarrow$
+
+\vspace{2mm}
+\textbf{Rāghava}
+
+\vspace{2mm}
+\te{రాఘవ}
+\end{mainbox}
+
+Rāghava is used in the sense of a descendant of Raghu, or a son
+of Raghu in the example.
+
+\subsection{Avyaya (\te{అవ్యయం})}
+
+Avyayas are indeclinable forms. They do not undergo the ordinary
+case-and-number declension characteristic of Subanta forms.
+
+\newpage 
+
+% ==================================================
+\section{How to go from Dhātu (Root) to Tiṅanta (Verbs)?}
+% ==================================================
+
+\subsection{The Verbal Route}
+
+\begin{mainbox}
+\centering
+\textbf{Dhātu}
+
+$\Downarrow$
+
+\textbf{Tiṅ-pratyaya selection}
+
+$\Downarrow$
+
+\textbf{Pada + Puruṣa + Vacana + Lakāra}
+
+$\Downarrow$
+
+\textbf{Tiṅanta / finite verbal form}
+\end{mainbox}
+
+The verbal route determines the appropriate verbal endings and
+forms from the Dhātu.
+
+\subsection{ṇijanta (\te{ణిజన్త})}
+
+\subsection{yaṅanta (\te{యఙన్త})}
+
+\subsection{yaṅluganta (\te{యఙ్లుగన్})}
+
+\subsection{sannanta (\te{సన్నన్త})} 
+
+\subsection{ātmanepada (\te{ఆత్మనేపద}), parasmaipada (\te{పరస్మైపదం}) and ubhayapadi (\te{ఉభయపది})}
+
+
+
+\end{document}
